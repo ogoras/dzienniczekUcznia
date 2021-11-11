@@ -1,6 +1,12 @@
 package model;
 
-public class Test implements Comparable {
+import java.time.LocalDate;
+
+public class SchoolTest implements Comparable {
+
+    public void setDate(LocalDate date) {
+        //todo
+    }
 
     public boolean isPast(){
         //todo
