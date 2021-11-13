@@ -13,13 +13,6 @@ public class Grade {
     private SchoolTest test;
 
     public Grade(int value, int weight, String comment, LocalDate date, Subject subject, Student student, SchoolTest test) {
-        this.value = value;
-        this.weight = weight;
-        this.comment = comment;
-        this.date = date;
-        this.subject = subject;
-        this.student = student;
-        this.test = test;
     }
 
     public Grade(int value, int weight, Subject subject) {
