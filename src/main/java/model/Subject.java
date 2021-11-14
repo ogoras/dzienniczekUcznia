@@ -14,4 +14,9 @@ public class Subject {
     public void setAmountOfClasses(int amount) {
         //todo
     }
+
+    public String getName() {
+        //todo
+        return "";
+    }
 }
