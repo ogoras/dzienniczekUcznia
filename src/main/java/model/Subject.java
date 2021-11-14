@@ -2,7 +2,7 @@ package model;
 
 public class Subject {
 
-    public Subject(String mathematics) {
+    public Subject(String subjectName) {
         //todo
     }
 

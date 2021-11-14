@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class CalculateAttendanceTest {
@@ -17,8 +16,7 @@ public class CalculateAttendanceTest {
     @BeforeEach
     public void setUp(){
         student = new Student("X", "Y", 10);
-        attendances = new HashMap<>();
-        student.setAttendances(attendances);
+        attendances = student.getAttendances();
     }
 
     @Test
@@ -37,7 +35,7 @@ public class CalculateAttendanceTest {
         double calculatedAttendance = student.calculateSubjectAttendance(math);
 
         //then
-        double expected = (double) mathAttendance/math.getAmountOfClasses();
+        double expected = 0.4;
 
         Assertions.assertEquals(expected, calculatedAttendance);
     }
@@ -141,8 +139,7 @@ public class CalculateAttendanceTest {
         double calculatedAttendance = student.calculateGeneralAttendance();
 
         //then
-        double expected = (double) (mathAttendance + biologyAttendance + chemistryAttendance)/
-                (math.getAmountOfClasses() + biology.getAmountOfClasses() + chemistry.getAmountOfClasses());
+        double expected = 0.9;
 
         Assertions.assertEquals(expected, calculatedAttendance);
     }

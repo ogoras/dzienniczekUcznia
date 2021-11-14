@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 import java.util.Map;
 
 public class Student {
@@ -30,5 +31,15 @@ public class Student {
 
     public void setAttendances(Map<Subject, Integer> attendances) {
         //todo
+    }
+
+    public Map<Subject, Integer> getAttendances() {
+        //todo
+        return null;
+    }
+
+    public List<Grade> getGrades() {
+        //todo
+        return null;
     }
 }

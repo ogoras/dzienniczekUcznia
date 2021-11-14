@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,7 +15,7 @@ public class CalculateAverageGradeTest {
     @BeforeEach
     public void setUp(){
         student = new Student("X", "Y", 10);
-        grades = new ArrayList<>();
+        grades = student.getGrades();
     }
 
     @Test
@@ -36,11 +35,7 @@ public class CalculateAverageGradeTest {
         double calculatedAverage = student.calculateWeightedAverageGradeForSubject(math);
 
         //then
-        double expected = (double) (grade1.getValue() * grade1.getWeight() +
-                                    grade2.getValue() * grade2.getWeight() +
-                                    grade3.getValue() * grade3.getWeight() +
-                                    grade4.getValue() * grade4.getWeight()) /
-                (grade1.getWeight() + grade2.getWeight() + grade3.getWeight() + grade4.getWeight());
+        double expected = 4.375;
 
         Assertions.assertEquals(expected, calculatedAverage);
     }
@@ -76,12 +71,9 @@ public class CalculateAverageGradeTest {
         double calculatedMathAverage = student.calculateWeightedAverageGradeForSubject(math);
 
         //then
-        double expected = (double) (mathGrade1.getValue() * mathGrade1.getWeight() +
-                mathGrade2.getValue() * mathGrade2.getWeight() +
-                mathGrade3.getValue() * mathGrade3.getWeight()) /
-                (mathGrade1.getWeight() + mathGrade2.getWeight() + mathGrade3.getWeight());
+        double expected = 4.8333333333;
 
-        Assertions.assertEquals(expected, calculatedMathAverage);
+        Assertions.assertEquals(expected, calculatedMathAverage, 1e-10);
     }
 
     @Test
@@ -129,24 +121,9 @@ public class CalculateAverageGradeTest {
         double calculatedAverage = student.calculateGeneralArithmeticAverageGrade();
 
         //then
-        double mathAverageGrade = (double) (mathGrade1.getValue() * mathGrade1.getWeight() +
-                mathGrade2.getValue() * mathGrade2.getWeight() +
-                mathGrade3.getValue() * mathGrade3.getWeight()) /
-                (mathGrade1.getWeight() + mathGrade2.getWeight() + mathGrade3.getWeight());
+        double expected = 3.964646465;
 
-        double biologyAverageGrade = (double) (biologyGrade1.getValue() * biologyGrade1.getWeight() +
-                biologyGrade2.getValue() * biologyGrade2.getWeight()) /
-                (biologyGrade1.getWeight() + biologyGrade2.getWeight());
-
-        double chemistryAverageGrade = (double) (chemistryGrade1.getValue() * chemistryGrade1.getWeight() +
-                chemistryGrade2.getValue() * chemistryGrade2.getWeight() +
-                chemistryGrade3.getValue() * chemistryGrade3.getWeight() +
-                chemistryGrade4.getValue() * chemistryGrade4.getWeight()) /
-                (chemistryGrade1.getWeight() + chemistryGrade2.getWeight() + chemistryGrade3.getWeight() + chemistryGrade4.getWeight());
-
-        double expected = (mathAverageGrade + biologyAverageGrade + chemistryAverageGrade) / 3;
-
-        Assertions.assertEquals(expected, calculatedAverage);
+        Assertions.assertEquals(expected, calculatedAverage, 1e-5);
     }
 
     @Test
