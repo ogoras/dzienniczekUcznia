@@ -1,4 +1,4 @@
-package model;
+package java.model;
 
 import model.Student;
 import model.Subject;
@@ -6,17 +6,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-
 public class CalculateAttendanceTest {
 
-    private Map<Subject, Integer> attendances;
     private Student student;
 
     @BeforeEach
     public void setUp(){
         student = new Student("X", "Y", 10);
-        attendances = student.getAttendances();
     }
 
     @Test
@@ -24,12 +20,8 @@ public class CalculateAttendanceTest {
         //given
         Subject math = new Subject("Mathematics");
         int mathAttendance = 2;
-        math.classTookPlace();
-        math.classTookPlace();
-        math.classTookPlace();
-        math.classTookPlace();
-        math.classTookPlace();
-        attendances.put(math, mathAttendance);
+        math.setAmountOfClasses(5);
+        student.setAttendance(math, mathAttendance);
 
         //when
         double calculatedAttendance = student.calculateSubjectAttendance(math);
@@ -45,11 +37,8 @@ public class CalculateAttendanceTest {
         //given
         Subject math = new Subject("Mathematics");
         int mathAttendance = 0;
-        math.classTookPlace();
-        math.classTookPlace();
-        math.classTookPlace();
-        math.classTookPlace();
-        attendances.put(math, mathAttendance);
+        math.setAmountOfClasses(4);
+        student.setAttendance(math, mathAttendance);
 
         //when
         double calculatedAttendance = student.calculateSubjectAttendance(math);
@@ -65,7 +54,8 @@ public class CalculateAttendanceTest {
         //given
         Subject math = new Subject("Mathematics");
         int mathAttendance = 0;
-        attendances.put(math, mathAttendance);
+        math.setAmountOfClasses(0);
+        student.setAttendance(math, mathAttendance);
 
         //when
         double calculatedAttendance = student.calculateSubjectAttendance(math);
@@ -81,10 +71,8 @@ public class CalculateAttendanceTest {
         //given
         Subject math = new Subject("Mathematics");
         int mathAttendance = 3;
-        math.classTookPlace();
-        math.classTookPlace();
-        math.classTookPlace();
-        attendances.put(math, mathAttendance);
+        math.setAmountOfClasses(3);
+        student.setAttendance(math, mathAttendance);
 
         //when
         double calculatedAttendance = student.calculateSubjectAttendance(math);
@@ -99,12 +87,9 @@ public class CalculateAttendanceTest {
     public void calculateAttendanceForOneSubject_whenAttendanceIsGreaterThanAmountOfClasses() {
         //given
         Subject math = new Subject("Mathematics");
-        math.classTookPlace();
-        math.classTookPlace();
-        math.classTookPlace();
-        math.classTookPlace();
+        math.setAmountOfClasses(4);
         int mathAttendance = math.getAmountOfClasses() + 1;
-        attendances.put(math, mathAttendance);
+        student.setAttendance(math, mathAttendance);
 
         //then
         Assertions.assertThrows(IllegalArgumentException.class, () -> student.calculateSubjectAttendance(math));
@@ -115,25 +100,18 @@ public class CalculateAttendanceTest {
         //given
         Subject math = new Subject("Mathematics");
         int mathAttendance = 3;
-        math.classTookPlace();
-        math.classTookPlace();
-        math.classTookPlace();
-        math.classTookPlace();
-        attendances.put(math, mathAttendance);
+        math.setAmountOfClasses(4);
+        student.setAttendance(math, mathAttendance);
 
         Subject biology = new Subject("Biology");
         int biologyAttendance = 5;
-        biology.classTookPlace();
-        biology.classTookPlace();
-        biology.classTookPlace();
-        biology.classTookPlace();
-        biology.classTookPlace();
-        attendances.put(biology, biologyAttendance);
+        biology.setAmountOfClasses(5);
+        student.setAttendance(biology, biologyAttendance);
 
         Subject chemistry = new Subject("Chemistry");
         int chemistryAttendance = 1;
-        chemistry.classTookPlace();
-        attendances.put(chemistry, chemistryAttendance);
+        chemistry.setAmountOfClasses(1);
+        student.setAttendance(chemistry, chemistryAttendance);
 
         //when
         double calculatedAttendance = student.calculateGeneralAttendance();

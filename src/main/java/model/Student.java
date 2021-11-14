@@ -29,7 +29,7 @@ public class Student {
         return -1;
     }
 
-    public void setAttendances(Map<Subject, Integer> attendances) {
+    public void setAttendance(Subject subject, int attendance) {
         //todo
     }
 
@@ -38,8 +38,12 @@ public class Student {
         return null;
     }
 
-    public List<Grade> getGrades() {
+    public List<Grade> getGrades(Subject subject) {
         //todo
         return null;
+    }
+
+    public void addGrade(Grade grade) {
+        //todo
     }
 }

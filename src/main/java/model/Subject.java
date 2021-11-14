@@ -6,12 +6,12 @@ public class Subject {
         //todo
     }
 
-    public void classTookPlace() {
-        //todo
-    }
-
     public int getAmountOfClasses() {
         //todo
         return 0;
+    }
+
+    public void setAmountOfClasses(int amount) {
+        //todo
     }
 }
