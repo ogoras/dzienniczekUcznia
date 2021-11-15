@@ -4,6 +4,17 @@ import java.time.LocalDate;
 
 public class Grade {
 
+    private int value;
+    private int weight;
+    private String comment;
+    private LocalDate date;
+    private Subject subject;
+    private Student student;
+    private SchoolTest test;
+
+    public Grade(int value, int weight, String comment, LocalDate date, Subject subject, Student student, SchoolTest test) {
+    }
+
     public Grade(int value, int weight, Subject subject) {
     }
 
