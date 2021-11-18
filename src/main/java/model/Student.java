@@ -38,6 +38,11 @@ public class Student {
         return null;
     }
 
+    public List<Subject> getSubjects() {
+        //TODO
+        return null;
+    }
+
     public List<Grade> getGrades(Subject subject) {
         //todo
         return null;

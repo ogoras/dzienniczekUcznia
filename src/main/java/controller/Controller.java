@@ -2,27 +2,36 @@ package controller;
 
 import model.Student;
 import model.Subject;
+
 import java.util.List;
 
 public class Controller {
 
+    private static final double MINIMAL_ATTENDANCE_THRESHOLD = 0.5;
+
     static public boolean checkAverage(double average) {
-        //TODO
-        return false;
+        return average >= 2;
     }
 
     static public boolean checkAttendance(double attendance) {
-        //TODO
-        return false;
+        return attendance >= MINIMAL_ATTENDANCE_THRESHOLD;
     }
 
     static public List<Subject> getListOfTroublesomeSubjects(Student student) {
-        //TODO
-        return null;
+        verifyStudent(student);
+        return student.getSubjects().stream()
+                .filter(subject -> student.calculateWeightedAverageGradeForSubject(subject) < 2).toList();
     }
 
     static public List<Subject> getListOfMostMissedSubjects(Student student) {
-        //TODO
-        return null;
+        verifyStudent(student);
+        return student.getSubjects().stream()
+                .filter(subject -> student.calculateSubjectAttendance(subject) < MINIMAL_ATTENDANCE_THRESHOLD).toList();
+    }
+
+    private static void verifyStudent(Student student) {
+        if (student == null || student.getSubjects() == null) {
+            throw new IllegalArgumentException("Student and his subjects cannot be null.");
+        }
     }
 }
