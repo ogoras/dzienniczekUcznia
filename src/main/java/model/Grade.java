@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Grade {
 
-    private int value;
+    private double value;
     private int weight;
     private String comment;
     private LocalDate date;
@@ -12,50 +12,61 @@ public class Grade {
     private Student student;
     private SchoolTest test;
 
-    public Grade(int value, int weight, String comment, LocalDate date, Subject subject, Student student, SchoolTest test) {
+    public Grade(double v, int w, String c, LocalDate d, Subject sub, Student s, SchoolTest t) {
+        value = v;
+        weight = w;
+        comment = c;
+        date = d;
+        subject = sub;
+        student = s;
+        test = t;
     }
 
-    public Grade(int value, int weight, Subject subject) {
+    public Grade(double v, int w, Subject sub) {
+        this(v, w, "", java.time.LocalDate.now(), sub, null, null);
     }
 
     public void setDate(LocalDate date) {
-        //todo
+        this.date = date;
     }
 
     public LocalDate getDate() {
-        //todo
-        return null;
+        return date;
     }
 
     public void setComment(String comment) {
-        //todo
+        this.comment = comment;
     }
 
     public String getComment() {
-        //todo
-        return null;
+        return comment;
     }
 
-    public void setValue() {
-        //todo
+    public void setValue(double v) {
+        value = v;
     }
 
-    public int getValue() {
-        //todo
-        return 0;
+    public double getValue() {
+        return value;
     }
 
     public void setWeight(int weight) {
-        //todo
+        this.weight = weight;
     }
 
     public int getWeight() {
-        //todo
-        return 0;
+        return weight;
     }
 
     public Subject getSubject() {
-        //todo
-        return null;
+        return subject;
+    }
+
+    public SchoolTest getTest() {
+        return test;
+    }
+
+    public Student getStudent() {
+        return student;
     }
 }
