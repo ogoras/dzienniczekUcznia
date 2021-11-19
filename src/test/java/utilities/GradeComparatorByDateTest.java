@@ -100,10 +100,10 @@ public class GradeComparatorByDateTest {
 
         //then
         Assertions.assertTrue(
-                list.get(0).getDate().equals(youngestDate) &&
+                list.get(0).getDate().equals(oldestDate) &&
                         list.get(1).getDate().equals(middleDate) &&
                         list.get(2).getDate().equals(middleDate) &&
-                        list.get(3).getDate().equals(oldestDate)
+                        list.get(3).getDate().equals(youngestDate)
         );
     }
 
