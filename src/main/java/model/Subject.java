@@ -2,21 +2,22 @@ package model;
 
 public class Subject {
 
+    private String subjectName;
+    private int amountOfClasses = 0;
+
     public Subject(String subjectName) {
-        //todo
+        this.subjectName = subjectName;
     }
 
     public int getAmountOfClasses() {
-        //todo
-        return 0;
+        return amountOfClasses;
     }
 
     public void setAmountOfClasses(int amount) {
-        //todo
+        amountOfClasses = amount;
     }
 
     public String getName() {
-        //todo
-        return "";
+        return subjectName;
     }
 }

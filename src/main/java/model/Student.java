@@ -1,54 +1,98 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Student {
 
+    private String firstName;
+    private String surname;
+    private int number;
+    private Map<Subject, Integer> attendances = new HashMap<>();
+    private Map<Subject, List<Grade>> grades = new HashMap<>();
 
     public Student(String firstName, String surname, int number) {
+        this.firstName = firstName;
+        this.surname = surname;
+        this.number = number;
     }
 
     public double calculateWeightedAverageGradeForSubject(Subject subject) {
-        //todo
-        return -1;
+        double sum = 0.0;
+        int sumOfWeights = 0;
+        if(grades.get(subject) == null)
+            return 0.0;
+        for(Grade grade : grades.get(subject)){
+            sum += grade.getValue() * grade.getWeight();
+            sumOfWeights += grade.getWeight();
+        }
+        return sumOfWeights != 0 ? (sum / sumOfWeights) : 0.0;
     }
 
     public double calculateGeneralArithmeticAverageGrade() {
-        //todo
-        return -1;
+        double sum = 0.0;
+        int count = 0;
+        for(Subject subject : grades.keySet()) {
+            sum += calculateWeightedAverageGradeForSubject(subject);
+            count++;
+        }
+        return count != 0 ? (sum / count) : 0.0;
     }
 
     public double calculateSubjectAttendance(Subject subject) {
-        //todo
-        return -1;
+        if(attendances.get(subject) > subject.getAmountOfClasses())
+            throw new IllegalArgumentException("Number of Attendances greater than number of classes");
+        return subject.getAmountOfClasses() != 0 ?
+                ((double) attendances.get(subject) / (double) subject.getAmountOfClasses()) : 0.0;
     }
 
     public double calculateGeneralAttendance() {
-        //todo
-        return -1;
+        double sum = 0.0;
+        int countOfClasses = 0;
+        for(Subject subject : attendances.keySet()){
+            if(subject.getAmountOfClasses() != 0) {
+                sum += (double) attendances.get(subject);
+                countOfClasses += subject.getAmountOfClasses();
+            }
+        }
+        return countOfClasses != 0 ? (sum / (double) countOfClasses) : 0.0;
     }
 
     public void setAttendance(Subject subject, int attendance) {
-        //todo
+        attendances.put(subject, attendance);
     }
 
     public Map<Subject, Integer> getAttendances() {
-        //todo
-        return null;
+        return attendances;
     }
 
-    public List<Subject> getSubjects() {
-        //TODO
-        return null;
+    public List<Subject> getAttendedSubjects() {
+        List<Subject> subjects;
+        subjects = attendances.keySet().stream().toList();
+        return subjects;
+    }
+
+    public List<Subject> getSubjectsWithGrades() {
+        List<Subject> subjects;
+        subjects = grades.keySet().stream().toList();
+        return subjects;
     }
 
     public List<Grade> getGrades(Subject subject) {
-        //todo
-        return null;
+        List<Grade> lgrades;
+        lgrades = grades.get(subject);
+        return lgrades;
     }
 
     public void addGrade(Grade grade) {
-        //todo
+        if(grades.get(grade.getSubject()) != null){
+            grades.get(grade.getSubject()).add(grade);
+        } else {
+            List<Grade> gradesList = new ArrayList<>();
+            gradesList.add(grade);
+            grades.put(grade.getSubject(), gradesList);
+        }
     }
 }

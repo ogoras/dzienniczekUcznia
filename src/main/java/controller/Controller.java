@@ -19,18 +19,18 @@ public class Controller {
 
     static public List<Subject> getListOfTroublesomeSubjects(Student student) {
         verifyStudent(student);
-        return student.getSubjects().stream()
+        return student.getSubjectsWithGrades().stream()
                 .filter(subject -> student.calculateWeightedAverageGradeForSubject(subject) < 2).toList();
     }
 
     static public List<Subject> getListOfMostMissedSubjects(Student student) {
         verifyStudent(student);
-        return student.getSubjects().stream()
+        return student.getAttendedSubjects().stream()
                 .filter(subject -> student.calculateSubjectAttendance(subject) < MINIMAL_ATTENDANCE_THRESHOLD).toList();
     }
 
     private static void verifyStudent(Student student) {
-        if (student == null || student.getSubjects() == null) {
+        if (student == null || student.getAttendedSubjects() == null) {
             throw new IllegalArgumentException("Student and his subjects cannot be null.");
         }
     }
