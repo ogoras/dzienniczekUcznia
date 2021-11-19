@@ -98,8 +98,8 @@ public class GradeComparatorByWeightTest {
         list.sort(comparator);
 
         //then
-        Assertions.assertTrue(list.get(0).getWeight() == biggestWeight && list.get(1).getWeight() == middleWeight
-                && list.get(2).getWeight() == middleWeight && list.get(3).getWeight() == smallestWeight
+        Assertions.assertTrue(list.get(0).getWeight() == smallestWeight && list.get(1).getWeight() == middleWeight
+                && list.get(2).getWeight() == middleWeight && list.get(3).getWeight() == biggestWeight
         );
     }
 
