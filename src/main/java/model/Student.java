@@ -5,18 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Student {
+public class Student extends Person {
 
-    private String firstName;
-    private String surname;
-    private int number;
     private Map<Subject, Integer> attendances = new HashMap<>();
     private Map<Subject, List<Grade>> grades = new HashMap<>();
 
-    public Student(String firstName, String surname, int number) {
-        this.firstName = firstName;
-        this.surname = surname;
-        this.number = number;
+    public Student(String firstName, String surname, int id) {
+        super(firstName, surname, id);
     }
 
     public double calculateWeightedAverageGradeForSubject(Subject subject) {
