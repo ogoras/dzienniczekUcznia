@@ -4,17 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Teacher extends Person {
-    private final int id;
     private List<Subject> subjects;
 
-    public Teacher(int id) {
-        super();
-        this.id = id;
+    public Teacher(String firstName, String lastName, int id) {
+        super(firstName, lastName, id);
         subjects = new ArrayList<>();
-    }
-
-    public int getId() {
-        return id;
     }
 
     public List<Subject> getSubjects() {
