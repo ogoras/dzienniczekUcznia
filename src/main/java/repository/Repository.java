@@ -46,6 +46,10 @@ public class Repository {
         Grade chemistryGrade2 = new Grade(1, 1, chemistry);
         Grade chemistryGrade3 = new Grade(6, 4, chemistry);
         Grade chemistryGrade4 = new Grade(2, 4, chemistry);
+        chemistryGrade1.setDate(LocalDate.of(2021,10,20));
+        chemistryGrade2.setDate(LocalDate.of(2020,11,28));
+        chemistryGrade3.setDate(LocalDate.of(2021,1,18));
+        chemistryGrade4.setDate(LocalDate.of(2021,1,1));
         student.addGrade(chemistryGrade1);
         student.addGrade(chemistryGrade2);
         student.addGrade(chemistryGrade3);

@@ -6,6 +6,7 @@ import model.Student;
 import model.Subject;
 import repository.Repository;
 import utilities.GradeComparatorByDate;
+import utilities.GradeComparatorByWeight;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +20,9 @@ public class UserInterface {
     BufferedReader reader;
     String command;
     Comparator<Grade> gradeComparator;
+    boolean sortDescending=true;
+    boolean isSubjectDisplayed=false;
+    Subject subject;
 
     UserInterface(){
         Repository repository = new Repository();
@@ -47,19 +51,40 @@ public class UserInterface {
                             System.out.println("Enter subject name: ");
                             name = reader.readLine();
                         }
-                        Subject subject = student.getSubject(name);
+                        subject = student.getSubject(name);
                         if(subject != null) {
+                            isSubjectDisplayed = true;
                             displaySubject(subject);
                         } else {
                             System.out.println("You're not enrolled in subject " + name + " or subject does not exist.");
                         }
                         break;
                     case "sort":
-                        //TODO
+                        switch (args[1]) {
+                            case "ascending", "asc" -> {
+                                gradeComparator = sortDescending ? gradeComparator.reversed() : gradeComparator;
+                                sortDescending = false;
+                            }
+                            case "descending", "desc" -> {
+                                gradeComparator = sortDescending ? gradeComparator : gradeComparator.reversed();
+                                sortDescending = true;
+                            }
+                            case "date" -> {
+                                gradeComparator = new GradeComparatorByDate();
+                                gradeComparator = sortDescending ? gradeComparator.reversed() : gradeComparator;
+                            }
+                            case "weight" -> {
+                                gradeComparator = new GradeComparatorByWeight();
+                                gradeComparator = sortDescending ? gradeComparator.reversed() : gradeComparator;
+                            }
+                        }
+                        if (isSubjectDisplayed)
+                            displaySubject(subject);
                         break;
                     case "home":
                     case "main":
                         displayMain();
+                        isSubjectDisplayed=false;
                     case "exit":
                         break;
                     default:
