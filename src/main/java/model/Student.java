@@ -101,4 +101,17 @@ public class Student extends Person {
     public Subject getSubject(String s) {
         return subjects.get(s.toLowerCase(Locale.ROOT));
     }
+
+    public List<SchoolTest> getUpcomingTests() {
+        List<SchoolTest> tests = new ArrayList<>();
+        for (Subject s : getSubjects()){
+            tests.addAll(s.getUpcomingTests());
+        }
+
+        return tests;
+    }
+
+    public List<SchoolTest> getTests(Subject subject) {
+        return subject.getTests();
+    }
 }

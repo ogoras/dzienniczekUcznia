@@ -1,10 +1,12 @@
 package repository;
 
 import model.Grade;
+import model.SchoolTest;
 import model.Student;
 import model.Subject;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Repository {
     public Student getStudent(int i) {
@@ -48,6 +50,15 @@ public class Repository {
         student.addGrade(chemistryGrade2);
         student.addGrade(chemistryGrade3);
         student.addGrade(chemistryGrade4);
+
+        SchoolTest test1 = new SchoolTest("DNA Exam",
+                LocalDateTime.of(2010, 8, 17, 10, 5),
+                "test about DNA");
+        SchoolTest test2 = new SchoolTest("Carp anatomy",
+                LocalDateTime.of(2021, 12, 24, 19, 0),
+                "Carp anatomy for your Christmas Eve");
+        biology.addTest(test1);
+        biology.addTest(test2);
 
         return student; //TODO
     }

@@ -1,6 +1,7 @@
 package ui;
 
 import model.Grade;
+import model.SchoolTest;
 import model.Student;
 import model.Subject;
 import repository.Repository;
@@ -60,7 +61,6 @@ public class UserInterface {
                     case "main":
                         displayMain();
                     case "exit":
-                    case "quit":
                         break;
                     default:
                         System.out.println("Wrong command");
@@ -76,8 +76,25 @@ public class UserInterface {
         System.out.println("Your general average grade is: " +
                 round(student.calculateArithmeticAverage(),2));
         System.out.println("Your general attendance is: " + round(student.calculateAttendance(),2));
+        System.out.println();
         displaySubjectList();
+        System.out.println();
+        displayTestList();
+    }
 
+    private void displayTestList() {
+        System.out.println("Your upcoming tests:");
+        System.out.println("Test:\t\t\tSubject:\t\tDate:\t\t\t\t\tDescription:");
+        for(SchoolTest test : student.getUpcomingTests()) {
+            printTest(test);
+        }
+    }
+
+    private void printTest(SchoolTest test) {
+        System.out.println(test.getName() +
+                "\t" + test.getSubject().getName() +
+                "\t\t\t" + test.getDate() +
+                "\t\t" + test.getDescription() );
     }
 
     private void displaySubjectList() {
@@ -91,6 +108,7 @@ public class UserInterface {
 
     private void displaySubject(Subject s){
         System.out.println(s.getName());
+        System.out.println();
         System.out.println("Grades: ");
         System.out.println("Value:\tWeight:\tDate:\t\t\tTest:\t\t\tComment:");
         List<Grade> grades = student.getGrades(s);
@@ -99,12 +117,20 @@ public class UserInterface {
             System.out.println(grade.getValue() + "\t\t" +
                                 grade.getWeight() + "\t\t" +
                                 grade.getDate() + "\t\t" +
-                                grade.getTest() + "\t\t" +
+                                (grade.getTest()==null?"":grade.getTest()) + "\t\t" +
                                 grade.getComment());
         }
 
+        System.out.println();
         System.out.println("Attendance: " + student.getAttendances().get(s) + "/" + s.getAmountOfClasses() + " = "
                 + round(student.calculateSubjectAttendance(s)*100, 2) + "%");
+
+        System.out.println();
+        if (!s.getTests().isEmpty())
+            System.out.println("Test:\t\t\tSubject:\t\tDate:\t\t\t\t\tDescription:");
+        for (SchoolTest test : s.getTests()) {
+            printTest(test);
+        }
     }
 
     private double round(double value, int decimalPlaces) {

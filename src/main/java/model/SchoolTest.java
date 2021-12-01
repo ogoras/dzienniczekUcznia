@@ -7,15 +7,21 @@ public class SchoolTest implements Comparable<SchoolTest> {
     private String name;
     private LocalDateTime date;
     private String description;
+    private Subject subject;
 
     public SchoolTest() {
-        this(null, null, null);
+        this(null, null, null, null);
     }
 
     public SchoolTest(String name, LocalDateTime date, String description) {
+        this(name,date,description,null);
+    }
+
+    public SchoolTest(String name, LocalDateTime date, String description, Subject subject) {
         this.name = name;
         this.date = date;
         this.description = description;
+        this.subject = subject;
     }
 
     public void setDate(LocalDateTime date) {
@@ -58,5 +64,13 @@ public class SchoolTest implements Comparable<SchoolTest> {
         } else {
             return 0;
         }
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 }
