@@ -1,17 +1,20 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Student extends Person {
 
     private Map<Subject, Integer> attendances = new HashMap<>();
     private Map<Subject, List<Grade>> grades = new HashMap<>();
+    private Map<String, Subject> subjects;
 
     public Student(String firstName, String surname, int id) {
         super(firstName, surname, id);
+        subjects = new HashMap<>();
+    }
+
+    public void addSubject(Subject subject) {
+        subjects.put(subject.getName(), subject);
     }
 
     public double calculateWeightedAverageGradeForSubject(Subject subject) {
@@ -89,5 +92,13 @@ public class Student extends Person {
             gradesList.add(grade);
             grades.put(grade.getSubject(), gradesList);
         }
+    }
+
+    public Collection<Subject> getSubjects() {
+        return subjects.values();
+    }
+
+    public Subject getSubject(String s) {
+        return subjects.get(s);
     }
 }
