@@ -35,7 +35,7 @@ public class ControllerTest {
         student.addGrade(grade5);
 
         //when
-        double average = student.calculateWeightedAverageGradeForSubject(math);
+        double average = student.calculateWeightedAverage(math);
 
         //then
 
@@ -58,7 +58,7 @@ public class ControllerTest {
         student.addGrade(grade5);
 
         //when
-        double average = student.calculateWeightedAverageGradeForSubject(math);
+        double average = student.calculateWeightedAverage(math);
 
         //then
         Assertions.assertFalse(Controller.checkAverage(average));

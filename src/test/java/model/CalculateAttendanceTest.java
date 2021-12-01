@@ -1,7 +1,5 @@
 package model;
 
-import model.Student;
-import model.Subject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -114,7 +112,7 @@ public class CalculateAttendanceTest {
         student.setAttendance(chemistry, chemistryAttendance);
 
         //when
-        double calculatedAttendance = student.calculateGeneralAttendance();
+        double calculatedAttendance = student.calculateAttendance();
 
         //then
         double expected = 0.9;

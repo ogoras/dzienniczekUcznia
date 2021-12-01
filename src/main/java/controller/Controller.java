@@ -20,7 +20,7 @@ public class Controller {
     static public List<Subject> getListOfTroublesomeSubjects(Student student) {
         verifyStudent(student);
         return student.getSubjectsWithGrades().stream()
-                .filter(subject -> student.calculateWeightedAverageGradeForSubject(subject) < 2).toList();
+                .filter(subject -> student.calculateWeightedAverage(subject) < 2).toList();
     }
 
     static public List<Subject> getListOfMostMissedSubjects(Student student) {

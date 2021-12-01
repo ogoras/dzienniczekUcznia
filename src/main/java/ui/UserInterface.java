@@ -9,7 +9,6 @@ import utilities.GradeComparatorByDate;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -39,6 +38,7 @@ public class UserInterface {
                 String[] args = command.split(" ");
                 switch(args[0]) {
                     case "subject":
+                    case "sub":
                         String name;
                         if(args.length > 1) {
                             name = args[1];
@@ -57,7 +57,10 @@ public class UserInterface {
                         //TODO
                         break;
                     case "home":
+                    case "main":
                         displayMain();
+                    case "exit":
+                    case "quit":
                         break;
                     default:
                         System.out.println("Wrong command");
@@ -70,8 +73,9 @@ public class UserInterface {
 
     private void displayMain(){
         System.out.println("Hi " + student.getFirstname() + "!");
-        System.out.println("Your general average grade is: " + student.calculateGeneralArithmeticAverageGrade());
-        System.out.println("Your general attendance is: " + student.calculateGeneralAttendance());
+        System.out.println("Your general average grade is: " +
+                round(student.calculateArithmeticAverage(),2));
+        System.out.println("Your general attendance is: " + round(student.calculateAttendance(),2));
         displaySubjectList();
 
     }
@@ -80,8 +84,8 @@ public class UserInterface {
         System.out.println("Subject:\t\tAverage Grade:\t\tAttendance:");
         for(Subject sub: student.getSubjects()) {
             System.out.println(sub.getName() +
-                    "\t\t" + Math.round(student.calculateWeightedAverageGradeForSubject(sub)*100)/100.0 +
-                    "\t\t\t\t" + Math.round(student.calculateSubjectAttendance(sub)*100)/100.0);
+                    "\t\t" + round(student.calculateWeightedAverage(sub),2) +
+                    "\t\t\t\t" + round(student.calculateSubjectAttendance(sub)*100,2) + "%");
         }
     }
 
@@ -99,6 +103,15 @@ public class UserInterface {
                                 grade.getComment());
         }
 
-        System.out.println("Attendance: " + student.getAttendances().get(s) + "/" + s.getAmountOfClasses() + " = " + Math.round(student.calculateSubjectAttendance(s)*10000)/100.0 + "%");
+        System.out.println("Attendance: " + student.getAttendances().get(s) + "/" + s.getAmountOfClasses() + " = "
+                + round(student.calculateSubjectAttendance(s)*100, 2) + "%");
+    }
+
+    private double round(double value, int decimalPlaces) {
+        int factor = 1;
+        for (int i=0; i<decimalPlaces;  i++) {
+            factor *= 10;
+        }
+        return Math.round(value*factor)/(double)factor;
     }
 }

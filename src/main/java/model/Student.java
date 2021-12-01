@@ -14,10 +14,10 @@ public class Student extends Person {
     }
 
     public void addSubject(Subject subject) {
-        subjects.put(subject.getName(), subject);
+        subjects.put(subject.getName().toLowerCase(Locale.ROOT), subject);
     }
 
-    public double calculateWeightedAverageGradeForSubject(Subject subject) {
+    public double calculateWeightedAverage(Subject subject) {
         double sum = 0.0;
         int sumOfWeights = 0;
         if(grades.get(subject) == null)
@@ -29,11 +29,11 @@ public class Student extends Person {
         return sumOfWeights != 0 ? (sum / sumOfWeights) : 0.0;
     }
 
-    public double calculateGeneralArithmeticAverageGrade() {
+    public double calculateArithmeticAverage() {
         double sum = 0.0;
         int count = 0;
         for(Subject subject : grades.keySet()) {
-            sum += calculateWeightedAverageGradeForSubject(subject);
+            sum += calculateWeightedAverage(subject);
             count++;
         }
         return count != 0 ? (sum / count) : 0.0;
@@ -46,7 +46,7 @@ public class Student extends Person {
                 ((double) attendances.get(subject) / (double) subject.getAmountOfClasses()) : 0.0;
     }
 
-    public double calculateGeneralAttendance() {
+    public double calculateAttendance() {
         double sum = 0.0;
         int countOfClasses = 0;
         for(Subject subject : attendances.keySet()){
@@ -99,6 +99,6 @@ public class Student extends Person {
     }
 
     public Subject getSubject(String s) {
-        return subjects.get(s);
+        return subjects.get(s.toLowerCase(Locale.ROOT));
     }
 }

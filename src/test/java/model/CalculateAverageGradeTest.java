@@ -1,8 +1,5 @@
 package model;
 
-import model.Grade;
-import model.Student;
-import model.Subject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +28,7 @@ public class CalculateAverageGradeTest {
         student.addGrade(grade4);
 
         //when
-        double calculatedAverage = student.calculateWeightedAverageGradeForSubject(math);
+        double calculatedAverage = student.calculateWeightedAverage(math);
 
         //then
         double expected = 4.375;
@@ -67,7 +64,7 @@ public class CalculateAverageGradeTest {
         student.addGrade(chemistryGrade4);
 
         //when
-        double calculatedMathAverage = student.calculateWeightedAverageGradeForSubject(math);
+        double calculatedMathAverage = student.calculateWeightedAverage(math);
 
         //then
         double expected = 4.8333333333;
@@ -81,7 +78,7 @@ public class CalculateAverageGradeTest {
         Subject math = new Subject("Mathematics");
 
         //when
-        double calculatedAverage = student.calculateWeightedAverageGradeForSubject(math);
+        double calculatedAverage = student.calculateWeightedAverage(math);
 
         //then
         double expected = 0;
@@ -117,7 +114,7 @@ public class CalculateAverageGradeTest {
         student.addGrade(chemistryGrade4);
 
         //when
-        double calculatedAverage = student.calculateGeneralArithmeticAverageGrade();
+        double calculatedAverage = student.calculateArithmeticAverage();
 
         //then
         double expected = 3.964646465;
@@ -128,7 +125,7 @@ public class CalculateAverageGradeTest {
     @Test
     public void calculateGeneralArithmeticAverageGrade_whenNoGrades() {
         //when
-        double calculatedAverageGrade = student.calculateGeneralArithmeticAverageGrade();
+        double calculatedAverageGrade = student.calculateArithmeticAverage();
 
         //then
         double expected = 0;
