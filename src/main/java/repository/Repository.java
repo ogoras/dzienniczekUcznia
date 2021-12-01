@@ -4,6 +4,8 @@ import model.Grade;
 import model.Student;
 import model.Subject;
 
+import java.time.LocalDate;
+
 public class Repository {
     public Student getStudent(int i) {
         Student student = new Student("Jan", "Kowalski", 0);
@@ -14,8 +16,8 @@ public class Repository {
         student.addSubject(math);
 
         Subject biology = new Subject("Biology");
-        int biologyAttendance = 5;
-        biology.setAmountOfClasses(5);
+        int biologyAttendance = 4;
+        biology.setAmountOfClasses(6);
         student.setAttendance(biology, biologyAttendance);
         student.addSubject(biology);
 
@@ -34,6 +36,7 @@ public class Repository {
 
         Grade biologyGrade1 = new Grade(3, 2, biology);
         Grade biologyGrade2 = new Grade(5, 4, biology);
+        biologyGrade1.setDate(LocalDate.of(2020, 10, 25));
         student.addGrade(biologyGrade1);
         student.addGrade(biologyGrade2);
 
