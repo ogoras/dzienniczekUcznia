@@ -122,8 +122,8 @@ public class UserInterface {
 
     private void initCommandsList() {
         commandsWithDescription.add("subject/sub - gives a prompt to insert name of subject to display");
-        commandsWithDescription.add("sort ascending/asc - sorts subject grades ascending value*");
-        commandsWithDescription.add("sort descending/desc - sorts subject grades descending value*");
+        commandsWithDescription.add("sort ascending/asc - sorts subject grades ascending*");
+        commandsWithDescription.add("sort descending/desc - sorts subject grades descending*");
         commandsWithDescription.add("sort date - sorts subject grades date*");
         commandsWithDescription.add("sort weight - sorts subject grades date*");
         commandsWithDescription.add("home/main - display homepage");

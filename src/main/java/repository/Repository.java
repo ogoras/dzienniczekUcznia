@@ -71,8 +71,8 @@ public class Repository {
         Grade physicsGrade1 = new Grade(2, 3, physics);
         Grade physicsGrade2 = new Grade(1, 2, physics);
         physicsGrade0.setDate(LocalDate.of(2020, 12, 2));
-        physicsGrade0.setDate(LocalDate.of(2020, 12, 1));
-        physicsGrade0.setDate(LocalDate.of(2020, 11, 15));
+        physicsGrade1.setDate(LocalDate.of(2020, 12, 1));
+        physicsGrade2.setDate(LocalDate.of(2020, 11, 15));
         student.addGrade(physicsGrade0);
         student.addGrade(physicsGrade1);
         student.addGrade(physicsGrade2);
