@@ -1,5 +1,7 @@
 package model;
 
+import org.openjdk.jmh.annotations.Benchmark;
+
 import java.util.*;
 
 public class Student extends Person {
