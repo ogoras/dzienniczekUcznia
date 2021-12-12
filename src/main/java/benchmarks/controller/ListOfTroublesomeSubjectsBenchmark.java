@@ -15,19 +15,19 @@ public class ListOfTroublesomeSubjectsBenchmark {
     private Student student;
 
     @Param({"10", "100"})
-    int numberOfGradesInSubject;
+    int numberOfGrades;
 
     @Param({"5", "20"})
-    int numberOfTroublesomeSubjects;
+    int numberOfSubjects;
 
     @Setup
     public void setup(){
         student  = new Student("Jan", "Kowalski", 1234);
 
-        for(int i = 0; i < numberOfTroublesomeSubjects; i++){
+        for(int i = 0; i < numberOfSubjects; i++){
             Subject subject = new Subject("Subject" + i);
 
-            for(int j = 0; j < numberOfTroublesomeSubjects; j++){
+            for(int j = 0; j < numberOfGrades; j++){
                 student.addGrade(new Grade(1, 5, subject));
             }
         }

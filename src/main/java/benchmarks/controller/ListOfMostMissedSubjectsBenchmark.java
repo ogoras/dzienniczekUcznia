@@ -18,14 +18,14 @@ public class ListOfMostMissedSubjectsBenchmark {
     int numberOfAttendancesInSubject;
 
     @Param({"5", "20"})
-    int numberOfMostMissedSubjects;
+    int numberOfSubjects;
 
     @Setup
     public void setup(){
         student  = new Student("Jan", "Kowalski", 1234);
         int amountOfClasses = numberOfAttendancesInSubject * 3;
 
-        for(int i = 0; i < numberOfMostMissedSubjects; i++){
+        for(int i = 0; i < numberOfSubjects; i++){
             Subject subject = new Subject("Subject" + i);
 
             subject.setAmountOfClasses(amountOfClasses);

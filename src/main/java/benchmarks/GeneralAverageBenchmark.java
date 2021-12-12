@@ -12,7 +12,7 @@ public class GeneralAverageBenchmark {
     Student student;
 
     @Param({"10", "100"})
-    int numberOfGradesInSubject;
+    int numberOfGrades;
     @Param({"5", "20"})
     int numberOfSubjects;
 
@@ -23,7 +23,7 @@ public class GeneralAverageBenchmark {
         for( int j = 0; j < numberOfSubjects; j++) {
             Subject subject = new Subject("Subject" + j);
 
-            for (int i = 0; i < numberOfGradesInSubject; i++) {
+            for (int i = 0; i < numberOfGrades; i++) {
                 double value = getRandomGradeValue();
                 int weight = getRandomWeight();
                 student.addGrade(new Grade(value, weight, subject));
