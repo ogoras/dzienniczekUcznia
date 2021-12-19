@@ -1,8 +1,8 @@
-package utilities;
+package TDD.utilities;
 
-import model.Grade;
-import model.Student;
-import model.Subject;
+import TDD.model.Grade;
+import TDD.model.Student;
+import TDD.model.Subject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

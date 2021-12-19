@@ -1,9 +1,9 @@
 package benchmarks.controller;
 
-import controller.Controller;
-import model.Grade;
-import model.Student;
-import model.Subject;
+import TDD.controller.Controller;
+import TDD.model.Grade;
+import TDD.model.Student;
+import TDD.model.Subject;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.List;

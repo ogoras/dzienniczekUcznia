@@ -1,8 +1,8 @@
-package controller;
+package TDD.controller;
 
-import model.Student;
-import model.Subject;
-import model.Grade;
+import TDD.model.Student;
+import TDD.model.Subject;
+import TDD.model.Grade;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

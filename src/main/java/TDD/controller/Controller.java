@@ -1,7 +1,7 @@
-package controller;
+package TDD.controller;
 
-import model.Student;
-import model.Subject;
+import TDD.model.Student;
+import TDD.model.Subject;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package benchmarks;
 
-import model.Student;
-import model.Subject;
+import TDD.model.Student;
+import TDD.model.Subject;
 import org.openjdk.jmh.annotations.*;
 import java.util.concurrent.TimeUnit;
 

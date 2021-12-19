@@ -1,4 +1,4 @@
-package model;
+package TDD.model;
 
 import java.time.LocalDate;
 
