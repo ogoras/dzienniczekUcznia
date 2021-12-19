@@ -1,9 +1,9 @@
 package repository;
 
-import TDD.model.Grade;
-import TDD.model.SchoolTest;
-import TDD.model.Student;
-import TDD.model.Subject;
+import model.Grade;
+import model.SchoolTest;
+import model.Student;
+import model.Subject;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

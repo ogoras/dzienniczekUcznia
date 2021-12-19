@@ -1,4 +1,4 @@
-package TDD.model;
+package model;
 
 import java.util.*;
 

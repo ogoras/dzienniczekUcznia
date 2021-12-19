@@ -1,13 +1,13 @@
 package ui;
 
-import TDD.controller.Controller;
-import TDD.model.Grade;
-import TDD.model.SchoolTest;
-import TDD.model.Student;
-import TDD.model.Subject;
+import controller.Controller;
+import model.Grade;
+import model.SchoolTest;
+import model.Student;
+import model.Subject;
 import repository.Repository;
-import TDD.utilities.GradeComparatorByDate;
-import TDD.utilities.GradeComparatorByWeight;
+import utilities.GradeComparatorByDate;
+import utilities.GradeComparatorByWeight;
 
 import java.io.BufferedReader;
 import java.io.IOException;

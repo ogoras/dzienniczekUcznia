@@ -1,6 +1,6 @@
-package TDD.utilities;
+package utilities;
 
-import TDD.model.Grade;
+import model.Grade;
 
 import java.util.Comparator;
 

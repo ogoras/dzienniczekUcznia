@@ -1,4 +1,4 @@
-package TDD.model;
+package model;
 
 public class Person {
     private final String firstname;
