@@ -1,6 +1,7 @@
 package signUp;
 
 import logIn.LogInSuccessSteps;
+import logIn.LogInWrongUsernameFailureSteps;
 import logIn.LogInWrongPasswordSteps;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
@@ -30,7 +31,7 @@ public class SignUpStories extends JUnitStories {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), new SignUpSuccessSteps(), new LogInSuccessSteps(), new LogInWrongPasswordSteps());
+        return new InstanceStepsFactory(configuration(), new SignUpSuccessSteps(), new LogInSuccessSteps(), new LogInWrongPasswordSteps(), new LogInWrongUsernameFailureSteps());
     }
 
     @Override
