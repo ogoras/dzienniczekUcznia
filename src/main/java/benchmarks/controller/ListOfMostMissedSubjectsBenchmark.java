@@ -1,7 +1,6 @@
 package benchmarks.controller;
 
 import controller.Controller;
-import model.Grade;
 import model.Student;
 import model.Subject;
 import org.openjdk.jmh.annotations.*;
