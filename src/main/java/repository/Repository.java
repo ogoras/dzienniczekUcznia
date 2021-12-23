@@ -9,14 +9,22 @@ import java.util.Map;
 
 public class Repository {
 
-    private Map<String, User> data;
+    private Map<String, User> allUsers;
 
     public Repository() {
-        data = getMockedData();
+        allUsers = getMockedData();
+    }
+
+    public boolean doesUserExits(String username) {
+        return allUsers.containsKey(username);
+    }
+
+    public boolean checkUserPassword(String username, String password) {
+        return allUsers.containsKey(username) && allUsers.get(username).getPassword().equals(password);
     }
 
     public Student getStudent(String username) {
-        return data.get(username).getStudentsData();
+        return allUsers.get(username).getStudentsData();
     }
 
     private Map<String, User> getMockedData() {
