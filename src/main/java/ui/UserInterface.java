@@ -31,7 +31,7 @@ public class UserInterface {
         Repository repository = new Repository();
         gradeComparator = new GradeComparatorByDate();
         gradeComparator = gradeComparator.reversed();
-        student = repository.getStudent(0);
+        student = repository.getStudent("Andrzej Andrzejewski 3");
 
         commandsWithDescription = new ArrayList<>();
         initCommandsList();
@@ -166,7 +166,6 @@ public class UserInterface {
 
     private void displayTestList() {
         System.out.println("Your upcoming tests:");
-        //System.out.println("Test:\t\t\tSubject:\t\tDate:\t\t\t\t\tDescription:");
         System.out.println(String.format("%-20s %-20s %-20s %s", "Test", "Subject", "Date", "Description"));
         for (SchoolTest test : student.getUpcomingTests()) {
             printTest(test);

@@ -8,9 +8,9 @@ public class Grade {
     private int weight;
     private String comment;
     private LocalDate date;
-    private Subject subject;
-    private Student student;
-    private SchoolTest test;
+    private final Subject subject;
+    private final Student student;
+    private final SchoolTest test;
 
     public Grade(double v, int w, String c, LocalDate d, Subject sub, Student s, SchoolTest t) {
         value = v;
@@ -20,6 +20,10 @@ public class Grade {
         subject = sub;
         student = s;
         test = t;
+    }
+
+    public Grade(double v, int w, LocalDate d, Subject sub) {
+        this(v, w, "", d, sub, null, null);
     }
 
     public Grade(double v, int w, Subject sub) {
