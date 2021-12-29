@@ -1,5 +1,6 @@
 package ui;
 
+import account.LogIn;
 import controller.Controller;
 import model.Grade;
 import model.SchoolTest;
@@ -26,13 +27,12 @@ public class UserInterface {
     private boolean isSubjectDisplayed = false;
     private Subject subject;
     private List<String> commandsWithDescription;
+    private final Repository repository;
 
     UserInterface() {
-        Repository repository = new Repository();
+        repository = new Repository();
         gradeComparator = new GradeComparatorByDate();
         gradeComparator = gradeComparator.reversed();
-        student = repository.getStudent("Andrzej Andrzejewski 3");
-
         commandsWithDescription = new ArrayList<>();
         initCommandsList();
     }
@@ -40,11 +40,12 @@ public class UserInterface {
     public void start() {
         reader = new BufferedReader(
                 new InputStreamReader(System.in));
+        try {
+            logInDisplay(reader);
 
-        displayMain();
-        command = "";
-        while (!command.equals("exit")) {
-            try {
+            displayMain();
+            command = "";
+            while (!command.equals("exit")) {
                 command = reader.readLine();
                 String[] args = command.split(" ");
                 switch (args[0]) {
@@ -114,10 +115,24 @@ public class UserInterface {
                     default:
                         System.out.println("Wrong command");
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void logInDisplay(BufferedReader reader) throws IOException {
+        LogIn login = new LogIn();
+        String username = "";
+        while (!login.isLoggedIn()) {
+            System.out.println("Hi! Enter username:\n");
+            username = reader.readLine();
+            System.out.println("Enter password:\n");
+            String password = reader.readLine();
+            login.performLogIn(username, password);
+        }
+        student = repository.getStudent(username);
     }
 
     private void initCommandsList() {

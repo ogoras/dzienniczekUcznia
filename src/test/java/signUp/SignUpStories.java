@@ -31,7 +31,7 @@ public class SignUpStories extends JUnitStories {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), new SignUpSuccessSteps(), new LogInSuccessSteps(), new LogInWrongPasswordSteps(), new LogInWrongUsernameFailureSteps());
+        return new InstanceStepsFactory(configuration(), new SignUpSuccessSteps(), new SignUpUsernameTakenSteps(), new LogInSuccessSteps(), new LogInWrongPasswordSteps(), new LogInWrongUsernameFailureSteps());
     }
 
     @Override
