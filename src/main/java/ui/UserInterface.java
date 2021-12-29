@@ -28,6 +28,8 @@ public class UserInterface {
     private Subject subject;
     private List<String> commandsWithDescription;
     private final Repository repository;
+    private final String ANSI_RESET = "\u001B[0m";
+    private final String ANSI_RED = "\u001B[31m";
 
     UserInterface() {
         repository = new Repository();
@@ -125,12 +127,21 @@ public class UserInterface {
     private void logInDisplay(BufferedReader reader) throws IOException {
         LogIn login = new LogIn();
         String username = "";
-        while (!login.isLoggedIn()) {
-            System.out.println("Hi! Enter username:\n");
+        boolean isLoggedIn = false;
+        while (!isLoggedIn) {
+            System.out.println("Hi! Enter username:");
             username = reader.readLine();
-            System.out.println("Enter password:\n");
+            System.out.println("Enter password:");
             String password = reader.readLine();
             login.performLogIn(username, password);
+            isLoggedIn = login.isLoggedIn();
+            if(!isLoggedIn){
+                if(!repository.doesUserExits(username)){
+                    System.out.println(ANSI_RED + "User does not exist" + ANSI_RESET);
+                } else{
+                    System.out.println(ANSI_RED + "Invalid password" + ANSI_RESET);
+                }
+            }
         }
         student = repository.getStudent(username);
     }
@@ -148,8 +159,6 @@ public class UserInterface {
     }
 
     private void displayMain() {
-        final String ANSI_RESET = "\u001B[0m";
-        final String ANSI_RED = "\u001B[31m";
         double average = round(student.calculateArithmeticAverage(), 2);
         double attendance = round(student.calculateAttendance(), 2);
         List<Subject> lowAverageSubjects = Controller.getListOfTroublesomeSubjects(student);
