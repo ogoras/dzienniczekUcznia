@@ -21,11 +21,11 @@ public class LogInWrongUsernameFailureSteps {
 
     @When("I log in with given data")
     public void userLogsInWithValidData() {
-        logIn.logIn(incorrectUsername, relevantPassword);
+        logIn.performLogIn(incorrectUsername, relevantPassword);
     }
 
     @Then("logging in is unsuccessful")
     public void userIsLoggedIn() {
-        Assertions.assertFalse(!logIn.isLoggedIn()); //tymczasowo bo zwraca zawsze true
+        Assertions.assertFalse(logIn.isLoggedIn());
     }
 }

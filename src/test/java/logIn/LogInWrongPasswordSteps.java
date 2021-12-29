@@ -21,7 +21,7 @@ public class LogInWrongPasswordSteps {
 
     @When("the user log in with given data")
     public void theUserLogInWithGivenData() {
-        logIn.logIn(validUsername, wrongPassword);
+        logIn.performLogIn(validUsername, wrongPassword);
     }
 
     @Then("logging in fails")

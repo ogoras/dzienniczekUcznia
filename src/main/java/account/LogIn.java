@@ -1,13 +1,21 @@
 package account;
 
+import repository.Repository;
+
 public class LogIn {
 
-    public void logIn(String username, String password) {
-        //TODO
+    private final Repository repository = new Repository();
+    private boolean isLoggedIn = false;
+
+    public void performLogIn(String username, String password) {
+        if(!repository.doesUserExits(username)){
+            isLoggedIn = false;
+        } else {
+            isLoggedIn = repository.checkUserPassword(username, password);
+        }
     }
 
     public boolean isLoggedIn() {
-        //TODO
-        return true;
+        return isLoggedIn;
     }
 }

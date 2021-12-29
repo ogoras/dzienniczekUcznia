@@ -21,7 +21,7 @@ public class LogInSuccessSteps {
 
     @When("I log in with given data")
     public void userLogsInWithValidData() {
-        logIn.logIn(validUsername, validPassword);
+        logIn.performLogIn(validUsername, validPassword);
     }
 
     @Then("logging in is successful")
