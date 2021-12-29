@@ -1,6 +1,7 @@
 package ui;
 
 import account.LogIn;
+import account.SignUp;
 import controller.Controller;
 import model.Grade;
 import model.SchoolTest;
@@ -125,7 +126,7 @@ public class UserInterface {
     }
 
     private void logInDisplay(BufferedReader reader) throws IOException {
-        LogIn login = new LogIn();
+        LogIn login = new LogIn(repository);
         String username = "";
         boolean isLoggedIn = false;
         while (!isLoggedIn) {

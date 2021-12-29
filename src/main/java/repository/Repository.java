@@ -10,6 +10,7 @@ import java.util.Map;
 public class Repository {
 
     private Map<String, User> allUsers;
+    private int id = 2;
 
     public Repository() {
         allUsers = getMockedData();
@@ -125,5 +126,10 @@ public class Repository {
 
         history.addTest(test);
         return human;
+    }
+
+    public void createUser(String username, String password, String firstName, String surname) {
+        allUsers.put(username, new User(username, password, new Student(firstName, surname, id)));
+        id++;
     }
 }
