@@ -44,7 +44,16 @@ public class UserInterface {
         reader = new BufferedReader(
                 new InputStreamReader(System.in));
         try {
-            logInDisplay(reader);
+            String rd = "";
+            while (!rd.equals("1") && !rd.equals("2")) {
+                System.out.println("Enter 1 to log in or 2 to sign up:");
+                rd = reader.readLine();
+            }
+            if (rd.equals("1")) {
+                logInDisplay(reader);
+            } else if (rd.equals("2")) {
+                SignUpDisplay(reader);
+            }
 
             displayMain();
             command = "";
@@ -144,6 +153,31 @@ public class UserInterface {
                 }
             }
         }
+        student = repository.getStudent(username);
+    }
+
+    private void SignUpDisplay(BufferedReader reader) throws IOException {
+        SignUp signUp = new SignUp(repository);
+        String first = "";
+        String last = "";
+        String username = "";
+        String password = "";
+        boolean signUpStatus = false;
+        while (!signUpStatus) {
+            System.out.println("Enter your first name:");
+            first = reader.readLine();
+            System.out.println("Enter your last name:");
+            last = reader.readLine();
+            System.out.println("Enter username:");
+            username = reader.readLine();
+            System.out.println("Enter password:");
+            password = reader.readLine();
+            signUpStatus = signUp.createAccount(username, password, first, last);
+            if(!signUpStatus){
+                System.out.println(ANSI_RED + "User " + username + " already exist! Please try sign up again." + ANSI_RESET);
+            }
+        }
+        repository.createUser(username, password, first, last);
         student = repository.getStudent(username);
     }
 
